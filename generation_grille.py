@@ -6,13 +6,14 @@ Created on Fri Apr 12 12:02:07 2019
 """
 
 import random
+import copy 
 
 def unique_solution(case:list):
     assert case.count(1)==1
 
 def ligne_de_base(ligne_reference:list):
-    ligne=random.shuffle(ligne_reference)
-    return ligne
+    random.shuffle(ligne_reference)
+    return ligne_reference
 
 def contenu_case(indice,premiere_ligne,grille):
     if unique_solution(grille.index(indice)):
@@ -24,7 +25,7 @@ def contenu_case(indice,premiere_ligne,grille):
 
     
 def decalage_ligne(ligne,decalage):
-    ligne_decalee=[]
+    ligne_decalee=[0]*9
     for i in range(9):
         #decalage=(i//3)+3*(i%3)
         if i+decalage<9:
@@ -44,32 +45,57 @@ def decalage_colonne(colonne,decalage):
     return colonne_decalee       
 
 def melange_lignes(grille):
+    ordre=[0,1,2]
+    random.shuffle(ordre)
     for k in range(3):
-        grille[(k%3)*3:(k%3+1)*3]=random.shuffle(grille[(k%3)*3:(k%3+1)*3])
+        ordre=[0,1,2]
+        random.shuffle(ordre)
+        grille_temp=copy.deepcopy(grille)
+        for i in range(3):
+            grille[(k%3)*3+i]=grille_temp[ordre[i]+(k%3)*3]
     return grille
 
 
-def symetrie_grile(grille):
+def symetrie_grille(grille):
+    grille_temp=copy.deepcopy(grille)
     for i in range(9):
         for j in range(9):
-            grille[i,j]=grille[j,i]
+            grille[i][j]=grille_temp[j][i]
     return grille
 
 def melange_colonnes(grille):
-    colonnes=symetrie_grille(grille)
+    colonnes=copy.deepcopy(symetrie_grille(grille))
     melange_lignes(colonnes)
     grille=symetrie_grille(colonnes)
     return grille
 
-#def melange_bloc(grille):
-    #ordre_bloc=random.shuffle([0,1,2])
-    #for k in range(3):
-        #for i in range(k*3,3*(k%3)):
-            
+def melange_par_bloc_ligne(grille):
+    ordre_bloc=[0,1,2]# attention shuffle melange sur place il faut donc donner un nom à la liste
+    random.shuffle(ordre_bloc)
+    grille_temp=copy.deepcopy(grille)
+    for k in range(3):
+        grille[(k%3)*3:(k%3+1)*3]=grille_temp[(ordre_bloc[k]%3)*3:(ordre_bloc[k]%3+1)*3]
+    return grille
+
+def melange_par_bloc_colonne(grille):
+    grille_temp=copy.deepcopy(symetrie_grille(grille))
+    melange_par_bloc_ligne(grille_temp)
+    grille=symetrie_grille(grille_temp)
+    return grille
+
+
+def grille_de_reference(premiere_ligne):
+    grille=[]
+    for i in range(9):
+        decalage=(i//3)+3*(i%3)
+        grille.append(decalage_ligne(premiere_ligne,decalage))
+    return grille
     
-        
-        
-        
-#def grille_aleatoire(premiere_ligne):      
     
+def grille_aleatoire(grille):
+    grille=melange_lignes(grille)
+    grille=melange_colonnes(grille)
+    grille=melange_par_bloc_ligne(grille)
+    grille=melange_par_bloc_colonne(grille)
+    return grille
     
