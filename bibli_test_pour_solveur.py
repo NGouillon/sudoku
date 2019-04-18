@@ -41,3 +41,9 @@ def indices_colonne(indice_case:list):
         indices_de_la_colonne.append([i,indice_case[1]])
     return indices_de_la_colonne
 
+def impossibilite_bloc(grille, indice_case):
+    if grille[indice_case].count(1)==1:
+        for indice in indices_bloc(indice_case):
+            if grille[indice].count(1)!=1:
+                grille[indice][grille[indice_case].index(1)]=0
+    return grille
