@@ -10,17 +10,20 @@ import copy
 
 def unique_solution(case:list):
     assert case.count(1)==1
-
-def ligne_de_base(ligne_reference:list):
-    random.shuffle(ligne_reference)
-    return ligne_reference
-
+    
+    
 def contenu_case(indice,premiere_ligne,grille):
     if unique_solution(grille.index(indice)):
         case=premiere_ligne[indice.index(1)]
     else:
         case=[]
     return case
+
+def ligne_de_base(ligne_reference:list):
+    random.shuffle(ligne_reference)
+    return ligne_reference
+
+
 
 
     

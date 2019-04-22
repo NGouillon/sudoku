@@ -22,3 +22,8 @@ grille=grille_de_reference(ligne_moi)
 print (grille)
 
 print(grille_aleatoire(grille))
+print(case_init(9))
+
+#print("|| {} | {} | {} || {} | {} | {} || {} | {} | {} ||"
+      #.format(*(cell or ' ' for cell in line)))
+      #pour imprimer les cases en une sule ligne de commande !
