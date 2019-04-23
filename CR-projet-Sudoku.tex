@@ -1,0 +1,91 @@
+\input{../../entete/entete-papier.tex}
+
+
+\begin{document}
+
+
+\renewcommand{\thetheoreme}{\!} % pas de numéros au theo
+\renewcommand{\thedefinition}{\!}
+\renewcommand{\theremarque}{\!}
+\renewcommand{\theexemple}{\!}
+\renewcommand{\theexemples}{\!}
+\renewcommand{\thepropriete}{\!}
+\renewcommand{\themethode}{\!}
+\renewcommand{\theexercice}{\!}
+\renewcommand{\therappel}{\!}
+\renewcommand{\thenotation}{\!}
+\renewcommand{\thevocabulaire}{\!}
+
+\renewcommand{\thesubsection}{\alph{subsection})}% lettre pour les sous-sections
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\Large{Projet Sudoku}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \section{Génération d'une grille de sudoku}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Idée de mélange à partir d'une grille connue}
+
+
+
+On peut considérer que toutes les grilles de même difficulté de sudoku peuvent être obtenues en mélangeant une grille connue.
+Pour cela il faut mélanger les nombres mais aussi les lignes (par rang de 3) , les colonnes puis les blocs lignes et blocs colonnes ( en déplaçant trois lignes à la fois).
+
+Le but premier est donc de créer des fonctions de mélange.
+
+Notre problème est pour effectuer l'échange entre deux lignes ou deux colonnes, en effet l'indexation des tables en python donne une erreur quand on fait une copie sur place à l'aide d'une variable temporaire. Il faut donc utiliser \texttt{deepcopy} pour pallier le problème.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Codage de la grille et des possibilités}
+
+
+Pour stocker toutes les possibilités d'une case, on prend un 9-uplet booléen : 0 si le nombre n'est pas possible et 1 s'il l'est. L'avantage est que le nombre associé à la place dans le 9-uplet peut changer sans modifier les tests de résolution.
+
+On va donc travailler sur des tableaux de tableaux de tableaux !
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Test de validité et difficulté d'une grille}
+
+On peut résoudre facilement un sudoku par un algorithme glouton en testant toutes les possibilités. Le problème  est d'évaluer la difficulté des grilles produites. 
+
+Pour nous faciliter la tâche on va travailler sur une grille connue et mélanger après avoir enlever les nombres. Cela a l'avantage de produire une nombre important de grille de même difficulté. On va classer les techniques de résolution par difficulté :
+
+\begin{itemize} 
+\item Facile :
+\begin{itemize}
+\item Unique candidat par intersection ligne colonne et bloc.
+\item Unique candidat par élimination dans les autres cases
+\end{itemize}
+\item Moyen :
+\begin{itemize}
+\item Obligation d'un nombre dans un bloc et sur une ligne (sur au moins deux cases) : élimination de ce nombre sur le reste de la ligne, colonne, bloc.
+\item Deux candidats dans exactement deux cases possibles (dans un bloc, une ligne ou une colonne) : élimination de ces candidats ailleurs.
+\end{itemize}
+\item Difficile :
+\begin{itemize}
+\item Trois candidats dans exactement trois cases possibles : élimination de ce nombre sur le reste de la ligne, colonne, bloc.
+\item Test de tous les candidats amenant à l'exclusion d'un nombre dans une case. 
+\item Test aléatoire (algo glouton)
+\end{itemize}
+
+\end{itemize}
+
+On va compter le nombre de fois que chaque technique est utilisée, on utilise une technique plus dure si les simples ne fonctionnent pas. De plus on va pondérer par le nombre de cases restantes à trouver.
+
+
+
+
+
+
+
+
+
+\end{document}
