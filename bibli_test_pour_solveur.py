@@ -106,5 +106,5 @@ def exclusion_par_paire(grille):
     return grille
 
 
-def exclusion_333(grille):
+#def exclusion_333(grille):
     
