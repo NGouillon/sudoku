@@ -16,7 +16,6 @@ from solveur_sudoku import *
 #print(indices_colonne([5,8]))
 
 
-
 #tests
 l=[]
 for i in range(9):
@@ -26,19 +25,47 @@ for i in range(9):
 
 ligne_moi=ligne_de_base(l)
 
+print(ligne_moi[1])
+
+
+for i in range(9):
+    print(decalage_ligne(ligne_moi,i))
+
+print(" ")
+
+for i in range(9):
+    print(grille_de_reference(ligne_moi)[i])
+
+print(" ")  
+
 grille=grille_de_reference(ligne_moi)
 
-print (grille)
 
-print(grille_aleatoire(grille))
-print(case_init(9))
+for i in range(9):
+    print(grille[i])
+
+print(" ")  
+for i in range(9):
+    print(grille_aleatoire(grille)[i])
+    
+
 print('oui')
 heu=grille[1][1].count(1)
 print(grille[1][1])
 print(heu)
 
+grille[0][0]=[1,1,1,1,1,1,1,1,1]
+grille[0][1]=[1,1,1,1,1,1,1,1,1]
+
+
+
+for i in range(9):
+    print(grille[i])
 
 print(initialisation_liste_indice_a_tester(grille))
+
+
+print(solution_grille(grille))
 
 
 

@@ -11,18 +11,18 @@ def case_init(taille):
     return liste
 
 def exclusion_ligne(grille,indice_case):
-    if grille[indice_case].count(1)==1:
+    if grille[indice_case[0]][indice_case[1]].count(1)==1:
         for i in range(9):
             if grille[indice_case[0]][i].count(1)!=1:
-                grille[indice_case[0]][i][grille[indice_case].index(1)]=0
+                grille[indice_case[0]][i][grille[indice_case[0]][indice_case[1]].index(1)]=0
     return grille
 
 
 def exclusion_colonne(grille,indice_case):
-    if grille[indice_case].count(1)==1:
+    if grille[indice_case[0]][indice_case[1]].count(1)==1:
         for i in range(9):
-            if grille[indice_case[0]][i].count(1)!=1:
-                grille[i][indice_case[1]][grille[indice_case].index(1)]=0
+            if grille[i][indice_case[1]].count(1)!=1:
+                grille[i][indice_case[1]][grille[indice_case[0]][indice_case[1]].index(1)]=0
     return grille
  
 def indices_bloc(indice_case:list):
@@ -47,10 +47,10 @@ def indices_colonne(indice_case:list):
     return indices_de_la_colonne
 
 def exclusion_bloc(grille, indice_case):
-    if grille[indice_case].count(1)==1:
+    if grille[indice_case[0]][indice_case[1]].count(1)==1:
         for indice in indices_bloc(indice_case):
-            if grille[indice].count(1)!=1:
-                grille[indice][grille[indice_case].index(1)]=0
+            if grille[indice[0]][indice[1]].count(1)!=1:
+                grille[indice[0]][indice[1]][grille[indice_case[0]][indice_case[1]].index(1)]=0
     return grille
 
 def nb_cases_remplies(grille):
@@ -63,8 +63,8 @@ def nb_cases_remplies(grille):
 
 def nb_possibilite_identique(grille,indice_case):
     nb=0
-    for indice in indices_ligne:
-        if grille[indice_case]==grille[indice]:
+    for indice in indices_ligne(indice_case):
+        if grille[indice_case[0]][indice_case[1]]==grille[indice[0]][indice[1]]:
             nb+=1
     return nb
     
@@ -74,35 +74,35 @@ def exclusion_par_paire(grille):
         for j in range(9):
             if grille[i][j].count(1)==2:
                 for indice in indices_ligne([i,j]):
-                    if indice != [i,j] and grille[i][j]==grille[indice]:
+                    if indice != [i,j] and grille[i][j]==grille[indice[0]][indice[1]]:
                         paire=[]
                         for k in range(9):
                             if grille[i][j][k]!=0:
                                 paire.append(k)
                         for indice2 in indices_ligne(indice):
                             if indice2!=indice and indice2!= [i,j]:
-                                grille[indice][paire[0]]=0
-                                grille[indice][paire[1]]=0
+                                grille[indice2[0]][indice2[1]][paire[0]]=0
+                                grille[indice2[0]][indice2[1]][paire[1]]=0
                 for indice in indices_colonne([i,j]):
-                    if indice != [i,j] and grille[i][j]==grille[indice]:
+                    if indice != [i,j] and grille[i][j]==grille[indice[0]][indice[1]]:
                         paire=[]
                         for k in range(9):
                             if grille[i][j][k]!=0:
                                 paire.append(k)
                         for indice2 in indices_colonne(indice):
                             if indice2!=indice and indice2!= [i,j]:
-                                grille[indice][paire[0]]=0
-                                grille[indice][paire[1]]=0
+                                grille[indice2[0]][indice2[1]][paire[0]]=0
+                                grille[indice2[0]][indice2[1]][paire[1]]=0
                 for indice in indices_bloc([i,j]):
-                    if indice != [i,j] and grille[i][j]==grille[indice]:
+                    if indice != [i,j] and grille[i][j]==grille[indice[0]][indice[1]]:
                         paire=[]
                         for k in range(9):
                             if grille[i][j][k]!=0:
                                 paire.append(k)
                         for indice2 in indices_bloc(indice):
                             if indice2!=indice and indice2!= [i,j]:
-                                grille[indice][paire[0]]=0
-                                grille[indice][paire[1]]=0
+                                grille[indice2[0]][indice2[1]][paire[0]]=0
+                                grille[indice2[0]][indice2[1]][paire[1]]=0
     return grille
 
 

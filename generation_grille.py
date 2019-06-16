@@ -28,7 +28,9 @@ def ligne_de_base(ligne_reference:list):
 
     
 def decalage_ligne(ligne,decalage):
-    ligne_decalee=[0]*9
+    ligne_decalee=[]
+    for i in range(9):
+        ligne_decalee.append([0]*9)
     for i in range(9):
         #decalage=(i//3)+3*(i%3)
         if i+decalage<9:
@@ -90,8 +92,7 @@ def melange_par_bloc_colonne(grille):
 def grille_de_reference(premiere_ligne):
     grille=[]
     for i in range(9):
-        decalage=(i//3)+3*(i%3)
-        grille.append(decalage_ligne(premiere_ligne,decalage))
+        grille.append(decalage_ligne(premiere_ligne,i))
     return grille
     
     
