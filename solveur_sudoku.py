@@ -44,34 +44,67 @@ def chgt_valeur_test(valeur_a_tester,liste_indice,increment,grille):
         valeur_a_tester[liste_indice[increment][0]][liste_indice[increment][1]].insert(indice_valeur_a_tester+1,1)
         return valeur_a_tester,increment,grille
     else :
-        valeur_a_tester[liste_indice[increment][0]][liste_indice[increment][1]]=[1,0,0,0,0,0,0,0,0]
-        grille[liste_indice[increment][0]][liste_indice[increment][1]]=[1]*9
-        chgt_valeur_test(valeur_a_tester,liste_indice, increment-1, grille)
+        while indice_valeur_a_tester ==8 and increment>=0:
+            valeur_a_tester[liste_indice[increment][0]][liste_indice[increment][1]]=[1,0,0,0,0,0,0,0,0]
+            grille[liste_indice[increment][0]][liste_indice[increment][1]]=[1]*9
+            increment-=1
+            indice_valeur_a_tester=valeur_a_tester[liste_indice[increment][0]][liste_indice[increment][1]].index(1)
+        return valeur_a_tester,increment,grille
+        
     
     
 
 def Resolution(grille,increment,liste_indice,valeur_a_tester):
-    grille_test=copy.deepcopy(grille)
     if increment >len(liste_indice)-1:
         return grille
     if increment <0:
         return False
-    grille_test[liste_indice[increment][0]][liste_indice[increment][1]]=valeur_a_tester[liste_indice[increment][0]][liste_indice[increment][1]]
-    if valeur_possible(grille_test,liste_indice[increment],valeur_a_tester):
-        Resolution(grille_test, increment+1, liste_indice, valeur_a_tester)
+    grille[liste_indice[increment][0]][liste_indice[increment][1]]=valeur_a_tester[liste_indice[increment][0]][liste_indice[increment][1]]
+    if valeur_possible(grille,liste_indice[increment],valeur_a_tester):
+        Resolution(grille, increment+1, liste_indice, valeur_a_tester)
     else :
-        chgt_valeur_test(valeur_a_tester, liste_indice, increment,grille_test)
-        Resolution(grille_test, increment, liste_indice, valeur_a_tester)
+        chgt_valeur_test(valeur_a_tester, liste_indice, increment,grille)
+        Resolution(grille, increment, liste_indice, valeur_a_tester)
         
-def solution_grille(grille):
+def solution_grille_recursif(grille):
     liste_indice=initialisation_liste_indice_a_tester(grille)
     valeurs_de_test=initialisation_valeur_a_tester()
     increment=0
     Resolution(grille, increment, liste_indice, valeurs_de_test)
-        
+
+
+def solution_grille(grille):
+    liste_indice=initialisation_liste_indice_a_tester(grille)
+    valeurs_a_tester=initialisation_valeur_a_tester()
+    increment=0
+    while increment<len(liste_indice):
+        if increment <0:
+            return False
+        grille[liste_indice[increment][0]][liste_indice[increment][1]]=valeurs_a_tester[liste_indice[increment][0]][liste_indice[increment][1]]
+        if valeur_possible(grille,liste_indice[increment],valeurs_a_tester):
+            increment+=1
+        else :
+            chgt_valeur_test(valeurs_a_tester, liste_indice, increment,grille)     
+    return grille
+    
 def nombre_solution(grille):
     nombre_de_solution=0
-    return nombre_de_solution
+    liste_indice=initialisation_liste_indice_a_tester(grille)
+    valeurs_a_tester=initialisation_valeur_a_tester()
+    increment=0
+    while increment<len(liste_indice):
+        if increment <0:
+            return nombre_de_solution
+        grille[liste_indice[increment][0]][liste_indice[increment][1]]=valeurs_a_tester[liste_indice[increment][0]][liste_indice[increment][1]]
+        if valeur_possible(grille,liste_indice[increment],valeurs_a_tester):
+            increment+=1
+        else :
+            chgt_valeur_test(valeurs_a_tester, liste_indice, increment,grille)     
+        if increment ==len(liste_indice):
+            nombre_de_solution+=1
+            increment-=1
+            chgt_valeur_test(valeurs_a_tester, liste_indice, increment,grille)
+            
 
 
 

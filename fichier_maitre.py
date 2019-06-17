@@ -45,9 +45,7 @@ for i in range(9):
     print(grille[i])
 
 print(" ")  
-for i in range(9):
-    print(grille_aleatoire(grille)[i])
-    
+
 
 print('oui')
 heu=grille[1][1].count(1)
@@ -65,7 +63,12 @@ for i in range(9):
 print(initialisation_liste_indice_a_tester(grille))
 
 
-print(solution_grille(grille))
+print(nombre_solution(grille))
+
+
+
+#print(solution_grille(grille))
+
 
 
 

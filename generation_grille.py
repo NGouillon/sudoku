@@ -92,7 +92,7 @@ def melange_par_bloc_colonne(grille):
 def grille_de_reference(premiere_ligne):
     grille=[]
     for i in range(9):
-        grille.append(decalage_ligne(premiere_ligne,i))
+        grille.append(decalage_ligne(premiere_ligne,(i%3)*3+(i//3)))
     return grille
     
     
