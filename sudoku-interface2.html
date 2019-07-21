@@ -1,0 +1,161 @@
+
+
+<!doctype html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+			<title> Grille de sudoku
+			
+			
+			</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"> 
+                
+                <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+                <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
+				
+		 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+           
+		<style>
+                html, body {
+                    margin:5px;
+                    padding:2px;
+					
+                    background: skyblue;
+                    color: black;
+                    
+                    text-align: center;
+                }
+
+		
+		
+ul {width: 455px; height: 450px; list-style: none; overflow: hidden;border: 1px solid black}
+	li {width: 50px; height: 50px;  float: left; text-align: center; line-height: 49px; border: 1px solid black;background-color: white}
+	</style>
+</head>
+<body>
+	
+
+
+<ul>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l1c1' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l1c2')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l1c2' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l1c2')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l1c3' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l1c3')" ></li>
+		<li><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l1c4' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l1c4')" ></li>
+		<li><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l1c5' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l1c5')" ></li>
+		<li><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l1c6' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l1c6')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l1c7' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l1c7')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l1c8' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l1c8')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l1c9' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l1c9')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l2c1' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l2c1')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l2c2' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l2c2')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l2c3' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l2c3')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l2c4' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l2c4')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l2c5' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l2c5')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l2c6' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l2c6')" ></li>
+		<li style="background-color: red" ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l2c7' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l2c7')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l2c8' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l2c8')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l2c9' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l2c9')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l3c1' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l3c1')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l3c2' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l3c2')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l3c3' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l3c3')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l3c4' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l3c4')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l3c5' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l3c5')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l3c6' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l3c6')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l3c7' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l3c7')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l3c8' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l3c8')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l3c9' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l3c9')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l4c1' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l4c1')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l4c2' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l4c2')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l4c3' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l4c3')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l4c4' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l4c4')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l4c5' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l4c5')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l4c6' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l4c6')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l4c7' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l4c7')" ></li>
+		<li><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l4c8' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l4c8')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l4c9' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l4c9')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l5c1' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l5c1')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l5c2' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l5c2')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l5c3' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l5c3')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l5c4' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l5c4')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l5c5' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l5c5')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l5c6' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l5c6')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l5c7' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l5c7')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l5c8' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l5c8')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l5c9' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l5c9')" ></li>
+		<li><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l6c1' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l6c1')" ></li>
+		<li><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l6c2' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l6c2')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l6c3' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l6c3')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l6c4' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l6c4')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l6c5' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l6c5')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l6c6' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l6c6')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l6c7' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l6c7')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l6c8' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l6c8')" ></li>
+		<li><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l6c9' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l6c9')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l7c1' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l7c1')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l7c2' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l7c2')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l7c3' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l7c3')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l7c4' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l7c4')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l7c5' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l7c5')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l7c6' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l7c6')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l7c7' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l7c7')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l7c8' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l7c8')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l7c9' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l7c9')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l8c1' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l8c1')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l8c2' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l8c2')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l8c3' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l8c3')" ></li>
+		<li><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l8c4' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l8c4')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l8c5' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l8c5')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l8c6' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l8c6')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l8c7' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l8c7')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l8c8' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l8c8')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l8c9' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l8c9')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l9c1' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l9c1')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l9c2' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l9c2')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l9c3' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l9c3')" ></li>
+		<li ><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l9c4' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l9c4')" ></li>
+		<li><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l9c5' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l9c5')" ></li>
+		<li><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l9c6' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l9c6')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l9c7' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l9c7')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l9c8' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l9c8')" ></li>
+		<li style="background-color: red"><input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l9c9' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l9c9')" ></li>
+	
+	
+	
+</ul>
+
+
+<button onclick="charge_grille();">Commencer</button>
+	</body>
+	
+	 <script>
+			
+			
+  
+  function Verif_Chiffre(Id) {
+  var elem = document.getElementById(Id);
+  if (elem.value < '1' || elem.value > '9') {elem.value="" }
+   }
+   function charge_grille() {
+   var test="2"
+   var el1c1=document.getElementById('l1c2');
+   if (test != null ){el1c1.value=test}}
+   
+</script>
+    
+            </script>
+		
+		
+		
+		
+		
+			
+			
+	</html>
+	
+	
+	<input style="border: 0px none; width: 45px; font: bold 18pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " Id='l1c1' type="text" size="1" maxlength="1" OnKeyUp="Verif_Chiffre('l1c1')" >
+	
+	
+	
+	
+	

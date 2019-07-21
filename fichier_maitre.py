@@ -23,15 +23,69 @@ for i in range(9):
     nb[i]=1
     l.append(nb)
 
-ligne_moi=ligne_de_base(l)
+ligne_moi=l
 
-print(ligne_moi[1])
+#ligne_de_base(l)
+
+
+
+print(ligne_moi)
+
+print(" +")  
+for i in range(9):
+    print(grille_de_reference(ligne_moi)[i])
+
+print(" +")  
+
+grille=grille_de_reference(ligne_moi)
+
+grille_a_resoudre=grille_a_une_solution(grille)
 
 
 for i in range(9):
-    print(decalage_ligne(ligne_moi,i))
+    for j in range(9):
+        print(transformation_chiffre(grille_a_resoudre[i][j]),end='')
+        print("|",end='')
+    print()
+print(" Stop")  
+nb_solution=nb_solution(grille_a_resoudre)
+print (nb_solution)
 
-print(" ")
+difficulte=difficulte_grille(grille_a_resoudre)
+print(difficulte)
+
+
+
+grille_a_resoudre=grille_incomplete(grille,55)
+
+
+for i in range(9):
+    for j in range(9):
+        print(transformation_chiffre(grille_a_resoudre[i][j]),end='')
+        print("|",end='')
+    print()
+print(" Stop")  
+nb_solution=nb_solution(grille_a_resoudre)
+print (nb_solution)
+
+if nb_solution==1:
+    difficulte=difficulte_grille(grille_a_resoudre)
+    print(difficulte)
+else:
+    print("trop de solution")
+    
+
+grille_a_resoudre_melangee=grille_aleatoire(grille_a_resoudre)
+
+
+for i in range(9):
+    for j in range(9):
+        print(transformation_chiffre(grille_a_resoudre[i][j]),end='')
+        print("|",end='')
+    print()
+print(" Stop")  
+print (nb_solution(grille_a_resoudre))
+print(" +")
 
 for i in range(9):
     print(grille_de_reference(ligne_moi)[i])
@@ -52,9 +106,10 @@ heu=grille[1][1].count(1)
 print(grille[1][1])
 print(heu)
 
-grille[0][0]=[1,1,1,1,1,1,1,1,1]
-grille[0][1]=[1,1,1,1,1,1,1,1,1]
-
+grille[0][0]=[0,1,1,0,0,0,0,0,0]
+grille[0][1]=[1,0,1,0,0,0,0,0,0]
+grille[0][2]=[1,1,0,0,0,0,0,0,0]
+grille[2][1]=[1]*9
 
 
 for i in range(9):
@@ -63,9 +118,18 @@ for i in range(9):
 print(initialisation_liste_indice_a_tester(grille))
 
 
-print(nombre_solution(grille))
+
+print(triplet_bloc(grille,[1,0]))
+
+exclusion_triplet_bloc(grille,[1,0])
 
 
+
+        
+for i in range(9):
+    for j in range(9):
+        print(transformation_chiffre(grille[i][j]))
+        
 
 #print(solution_grille(grille))
 

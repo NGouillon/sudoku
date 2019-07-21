@@ -35,12 +35,14 @@
 
 
 
-On peut considérer que toutes les grilles de même difficulté de sudoku peuvent être obtenues en mélangeant une grille connue.
+On peut considérer que presque toutes les grilles de même difficulté de sudoku peuvent être obtenues en mélangeant une grille connue.
 Pour cela il faut mélanger les nombres mais aussi les lignes (par rang de 3) , les colonnes puis les blocs lignes et blocs colonnes ( en déplaçant trois lignes à la fois).
 
 Le but premier est donc de créer des fonctions de mélange.
 
 Notre problème est pour effectuer l'échange entre deux lignes ou deux colonnes, en effet l'indexation des tables en python donne une erreur quand on fait une copie sur place à l'aide d'une variable temporaire. Il faut donc utiliser \texttt{deepcopy} pour pallier le problème.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Codage de la grille et des possibilités}

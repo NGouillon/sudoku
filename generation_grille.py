@@ -7,6 +7,7 @@ Created on Fri Apr 12 12:02:07 2019
 
 import random
 import copy 
+from solveur_sudoku import *
 
 def unique_solution(case:list):
     assert case.count(1)==1
@@ -49,15 +50,25 @@ def decalage_colonne(colonne,decalage):
             colonne_decalee[i]=colonne[i+decalage-9]
     return colonne_decalee       
 
+
+
+def grille_de_reference(premiere_ligne):
+    grille=[]
+    for i in range(9):
+        grille.append(decalage_ligne(premiere_ligne,(i%3)*3+(i//3)))
+    return grille
+
+
 def melange_lignes(grille):
-    ordre=[0,1,2]
-    random.shuffle(ordre)
     for k in range(3):
         ordre=[0,1,2]
         random.shuffle(ordre)
-        grille_temp=copy.deepcopy(grille)
-        for i in range(3):
-            grille[(k%3)*3+i]=grille_temp[ordre[i]+(k%3)*3]
+        ligne1_temp=copy.deepcopy(grille[3*k]) 
+        ligne2_temp=copy.deepcopy(grille[3*k+1]) 
+        ligne3_temp=copy.deepcopy(grille[3*k+2]) 
+        grille[k*3+ordre[0]]=ligne1_temp
+        grille[k*3+ordre[1]]=ligne2_temp
+        grille[k*3+ordre[2]]=ligne3_temp        
     return grille
 
 
@@ -89,11 +100,6 @@ def melange_par_bloc_colonne(grille):
     return grille
 
 
-def grille_de_reference(premiere_ligne):
-    grille=[]
-    for i in range(9):
-        grille.append(decalage_ligne(premiere_ligne,(i%3)*3+(i//3)))
-    return grille
     
     
 def grille_aleatoire(grille):
@@ -102,4 +108,30 @@ def grille_aleatoire(grille):
     grille=melange_par_bloc_ligne(grille)
     grille=melange_par_bloc_colonne(grille)
     return grille
+
+
+def transformation_chiffre(liste):
+    if liste.count(1)==1:
+        return liste.index(1)+1
+    else :
+        return 0
+    
+    
+def grille_incomplete(grille,nb_trous):
+    k=0
+    while k < nb_trous:
+        i=random.randint(0,8)
+        j=random.randint(0,8)
+        if grille[i][j]!=[1]*9:
+            grille[i][j]=[1]*9
+            k+=1
+    return grille
+
+
+def grille_a_une_solution(grille):
+    grille_a_trou=grille_incomplete(grille,1)
+    while solution_unique(grille_a_trou):
+        grille_a_trou=grille_incomplete(grille_a_trou,1)
+    return grille_a_trou
+
     

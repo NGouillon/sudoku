@@ -1,0 +1,265 @@
+
+
+<!doctype html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+			<title> Grille de sudoku
+			
+			
+			</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"> 
+                
+                <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+                <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
+				
+		 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script>
+			function du_texte(texte) {
+                console.log(texte)
+        }
+
+			function valideChiffre() {
+				var  value= document.getElementByID("test").value;
+				if (value >= "1" && value <= "9") {
+					texte("oui c'est un chiffre")
+					}
+				else {document.getElementByID("test").value="";
+						console.log(champs)
+						console.log("merde")
+					}
+				}
+				
+				
+                $(function souligne() {						//le $( indique qu'il faut attendre que la page soit complètement chargée
+                    $("li").hover(
+                        function() {
+                            $(this).css("text-decoration", "underline")// this correspond à l'objet courant
+                        },
+                        function() {
+                            $(this).css("text-decoration", "none")
+                        }
+                    )
+					$("h1").click(
+							function() {
+						$(this).html(" coucou")
+						}
+					)
+                })
+			
+				
+    
+            </script>
+		<style>
+                html, body {
+                    margin:5px;
+                    padding:2px;
+					
+                    background: skyblue;
+                    color: black;
+                    
+                    text-align: center;
+                }
+			
+h1 {
+ border-width:1px 2px 3px 2px;
+ border-style:solid dotted;
+ border-color:black red;
+ padding:0 10px;
+ }
+ .case-border{border-width:1px 2px 3px 2px;
+ border-style:solid dotted;
+ border-color:white blue;
+ padding:0 3px;}
+ .case{width: 80px; height: 80px; background-color: red; float: left; text-align: center; line-height: 80px; border: 1px solid black}
+			
+			.sudoku{
+			width: 900px
+			display: grid;
+			grid-template-columns : repeat (9, 1fr);
+			grid-template-rows : repeat (9, 100px);
+			overflow : hidden;
+			
+		}
+		.l1c1{grid-area : 1/1; display : block
+		width=100px;height=1000px; background-color:white ;overflow:hidden}
+		.l1c2{grid-area : 1/2;}
+		.l1c3{grid-area : 1/3;}
+		.l1c4{grid-area : 1/4;}
+		.l1c5{grid-area : 1/5;}
+		.l1c6{grid-area : 1/6;}
+		.l1c7{grid-area : 1/7;}
+		.l1c8{grid-area : 1/8;}
+		.l1c9{grid-area : 1/9;}
+		
+		.l2c1{grid-area : 2/1;}
+		.l2c2{grid-area : 2/2;}
+		.l2c3{grid-area : 2/3;}
+		.l2c4{grid-area : 2/4;}
+		.l2c5{grid-area : 2/5;}
+		.l2c6{grid-area : 2/6;}
+		.l2c7{grid-area : 2/7;}
+		.l2c8{grid-area : 2/8;}
+		.l2c9{grid-area : 2/9;}
+		
+		.l3c1{grid-area : 3/1;}
+		.l3c2{grid-area : 3/2;}
+		.l3c3{grid-area : 3/3;}
+		.l3c4{grid-area : 3/4;}
+		.l3c5{grid-area : 3/5;}
+		.l3c6{grid-area : 3/6;}
+		.l3c7{grid-area : 3/7;}
+		.l3c8{grid-area : 3/8;}
+		.l3c9{grid-area : 3/9;}
+		
+		.l4c1{grid-area : 4/1;}
+		.l4c2{grid-area : 4/2;}
+		.l4c3{grid-area : 4/3;}
+		.l4c4{grid-area : 4/4;}
+		.l4c5{grid-area : 4/5;}
+		.l4c6{grid-area : 4/6;}
+		.l4c7{grid-area : 4/7;}
+		.l4c8{grid-area : 4/8;}
+		.l4c9{grid-area : 4/9;}
+		
+		.l5c1{grid-area : 5/1;}
+		.l5c2{grid-area : 5/2;}
+		.l5c3{grid-area : 5/3;}
+		.l5c4{grid-area : 5/4;}
+		.l5c5{grid-area : 5/5;}
+		.l5c6{grid-area : 5/6;}
+		.l5c7{grid-area : 5/7;}
+		.l5c8{grid-area : 5/8;width: 80px; height: 80px; background-color: red; float: left; text-align: center; line-height: 80px; border: 1px solid black}
+		.l5c9{grid-area : 5/9;}
+		
+		.l6c1{grid-area : 6/1;}
+		.l6c2{grid-area : 6/2;}
+		.l6c3{grid-area : 6/3;}
+		.l6c4{grid-area : 6/4;}
+		.l6c5{grid-area : 6/5;}
+		.l6c6{grid-area : 6/6;}
+		.l6c7{grid-area : 6/7;}
+		.l6c8{grid-area : 6/8;}
+		.l6c9{grid-area : 6/9;}
+		
+		.l7c1{grid-area : 7/1;}
+		.l7c2{grid-area : 7/2;}
+		.l7c3{grid-area : 7/3;}
+		.l7c4{grid-area : 7/4;}
+		.l7c5{grid-area : 7/5;}
+		.l7c6{grid-area : 7/6;}
+		.l7c7{grid-area : 7/7;}
+		.l7c8{grid-area : 7/8;}
+		.l7c9{grid-area : 7/9;}
+		
+		.l8c1{grid-area : 8/1;}
+		.l8c2{grid-area : 8/2;}
+		.l8c3{grid-area : 8/3;}
+		.l8c4{grid-area : 8/4;}
+		.l8c5{grid-area : 8/5;}
+		.l8c6{grid-area : 8/6;}
+		.l8c7{grid-area : 8/7;}
+		.l8c8{grid-area : 8/8;}
+		.l8c9{grid-area : 8/9;}
+		
+		.l9c1{grid-area : 9/1;}
+		.l9c2{grid-area : 9/2;}
+		.l9c3{grid-area : 9/3;}
+		.l9c4{grid-area : 9/4;}
+		.l9c5{grid-area : 9/5;}
+		.l9c6{grid-area : 9/6;}
+		.l9c7{grid-area : 9/7;}
+		.l9c8{grid-area : 9/8;}
+		.l9c9{grid-area : 9/9;}
+		
+b.cercle {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: 25px auto;
+  background-color: #0159b3;
+  text-align:right;
+  display: table-cell
+  vertical-align:middle
+}	
+		
+ul {width: 403px; list-style: none; overflow: hidden;border: 1px solid black}
+	li {width: 80px; height: 80px; background-color: red; float: left; text-align: center; line-height: 80px; border: 1px solid black}
+	</style>
+</head>
+<body>
+	
+	<body>	
+	<h1>
+	<b class="cercle"></b></h1>
+		<div class="sudoku">
+			<div class="l1c1"> <b class="cercle">1 </b> </div>
+			<div class="l5c8"> 6 </div>
+			<div class="l3c6"> 7 </div>
+			<div class="l4c1"> 1 </div>
+			<div class="l2c1"> 1 </div>
+			<div class="l9c1"> 9 </div>
+			<div class="l6c1 case"> 16 </div>
+			<div class="l7c1"> 7 </div>
+			<div class="l8c1"> 8 </div>
+			
+
+		</div>
+		
+	<table border="0">
+<tr><td>
+<table border="1" width="20" height="5" style="background-color:blue; border-collapse:collapse"><tr><td>&nbsp;</td></tr></table>
+<td><span>Texte ici</span></td>
+</tr>
+</table>
+<table "border="0">
+<tr><td>
+<table border="1" width="20" height="5" style="background-color:green; border-collapse:collapse"><tr><td>&nbsp;</td></tr></table>
+<td><span>Texte ici</span></td>
+</tr>
+</table>
+
+
+<ul>
+	<li><div class="case-border"> 1 <div></li>
+	<li><input style="border: 0px none; width: 65px; font: bold 24pt arial, sans-serif; text-align: center; vertical-align: middle; background-color: transparent; color: rgb(51, 102, 153); " type="text" size="1" maxlength="1" Id="test" OnKeyUp="valideChiffre()" ></li>
+	<li  >3</li>
+	<li>4</li>
+	<li>5</li>
+	<li>6</li>
+	<li>7</li>
+	<li>8</li>
+	<li>9</li>
+	<li>10</li>
+	<li>11</li>
+	<li>12</li>
+	<li>13</li>
+	<li>14</li>
+	<li>15</li>
+	<li>16</li>
+	<li>17</li>
+	<li>18</li>
+	<li>19</li>
+	<li>20</li>
+	<li>21</li>
+	<li>22</li>
+	<li>23</li>
+	<li>24</li>
+	<li>25</li>
+</ul>
+	</body>
+	
+	
+		
+		
+		
+		
+		
+			
+			
+	</html>
+	
+	
+	
+	
+	
